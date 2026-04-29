@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Note From Us · Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     EDIT BELOW: Couple names + welcome message
+     ============================================ */
+  :root {
+    --ink: #2a2520;
+    --paper: #f5efe6;
+    --paper-warm: #ede4d3;
+    --rose: #c89b8c;
+    --rose-deep: #a87968;
+    --gold: #b8924a;
+    --shadow: rgba(42, 37, 32, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper texture using gradients */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(200, 155, 140, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(184, 146, 74, 0.06) 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(168, 121, 104, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  /* ===== Decorative ornament ===== */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    opacity: 0.6;
+  }
+  .ornament-line {
+    width: 60px;
+    height: 1px;
+    background: var(--rose-deep);
+  }
+  .ornament-symbol {
+    font-family: 'Italiana', serif;
+    font-size: 1.2rem;
+    color: var(--rose-deep);
+    letter-spacing: 0.3em;
+  }
+
+  /* ===== Password screen ===== */
+  .card {
+    background: var(--paper-warm);
+    max-width: 540px;
+    width: 100%;
+    padding: 3.5rem 2.5rem;
+    border-radius: 2px;
+    box-shadow:
+      0 1px 2px var(--shadow),
+      0 8px 30px rgba(42, 37, 32, 0.06),
+      inset 0 0 0 1px rgba(184, 146, 74, 0.15);
+    text-align: center;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    font-weight: 400;
+  }
+
+  .title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 7vw, 3.8rem);
+    line-height: 1;
+    margin: 1rem 0 0.5rem;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--rose-deep);
+    font-weight: 300;
+  }
+
+  .message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 2rem 0;
+    opacity: 0.85;
+  }
+
+  .input-group {
+    margin-top: 1rem;
+  }
+
+  .input-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    margin-bottom: 0.75rem;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 0.15em;
+    background: var(--paper);
+    border: 1px solid rgba(168, 121, 104, 0.3);
+    border-radius: 2px;
+    color: var(--ink);
+    outline: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  input[type="text"]:focus {
+    border-color: var(--rose-deep);
+    box-shadow: 0 0 0 3px rgba(200, 155, 140, 0.15);
+  }
+
+  button {
+    margin-top: 1.25rem;
+    padding: 1rem 2.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 400;
+  }
+
+  button:hover {
+    background: var(--rose-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(168, 121, 104, 0.3);
+  }
+
+  .error {
+    margin-top: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #a8504a;
+    font-size: 1rem;
+    min-height: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .error.show {
+    opacity: 1;
+  }
+
+  /* ===== Video screen ===== */
+  .video-screen {
+    display: none;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .video-screen.active {
+    display: block;
+  }
+
+  .greeting {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .greeting-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--rose-deep);
+    margin-bottom: 2rem;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--ink);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(42, 37, 32, 0.2);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .back-btn {
+    margin-top: 1.5rem;
+    background: transparent;
+    color: var(--rose-deep);
+    border: 1px solid var(--rose-deep);
+  }
+
+  .back-btn:hover {
+    background: var(--rose-deep);
+    color: var(--paper);
+  }
+
+  /* Hide initial card when video shown */
+  .card.hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .card { padding: 2.5rem 1.5rem; }
+    input[type="text"] { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============================================
+       PASSWORD ENTRY SCREEN
+       ============================================ -->
+  <div class="card" id="passwordCard">
+    <div class="eyebrow">A note from us</div>
+    <h1 class="title">Justin & Lia</h1>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-symbol">✦</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <p class="message">
+      Thank you for being here on our most special day.<br>
+      Find the password on your place card and enter it below
+      to receive a little message just for you.
+    </p>
+
+    <div class="input-group">
+      <label class="input-label" for="password">Your password</label>
+      <input
+        type="text"
+        id="password"
+        placeholder="• • • • • •"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+      >
+      <button onclick="checkPassword()">Reveal</button>
+      <div class="error" id="error">That word doesn't look quite right — try again.</div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       VIDEO PLAYBACK SCREEN
+       ============================================ -->
+  <div class="video-screen" id="videoScreen">
+    <h2 class="greeting" id="greeting"></h2>
+    <p class="greeting-sub">— with all our love —</p>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-symbol">✦</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="video-wrapper">
+      <iframe id="videoFrame" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <button class="back-btn" onclick="goBack()">← Enter another word</button>
+  </div>
+
+</div>
+
+<script>
+  /* ============================================================
+     EDIT THIS LIST: each guest gets a unique password (the "key")
+     and a YouTube unlisted video link, plus their name.
+     ------------------------------------------------------------
+     HOW TO GET YOUTUBE EMBED LINK:
+     1. Upload video to YouTube → set to "Unlisted"
+     2. Click Share → Embed → copy the URL inside src="..."
+     3. It looks like: https://www.youtube.com/embed/XXXXXXXXXXX
+     ------------------------------------------------------------
+     PASSWORD TIPS:
+     • Keep them simple, memorable, no confusing letters (O/0, l/1)
+     • They are NOT case-sensitive (SUNSET = sunset = Sunset)
+     • Couples share one password
+     ============================================================ */
+  const guests = {
+    "SUNSET": {
+      name: "Mum & Dad",
+      video: "https://www.youtube.com/embed/jNQXAC9IVRw"
+    },
+    "MOONLIGHT": {
+      name: "Auntie Linda",
+      video: "https://www.youtube.com/embed/jNQXAC9IVRw"
+    },
+    "STARDUST": {
+      name: "Tom & Emma",
+      video: "https://www.youtube.com/embed/jNQXAC9IVRw"
+    },
+    "WILDFLOWER": {
+      name: "The Pattersons",
+      video: "https://www.youtube.com/embed/jNQXAC9IVRw"
+    },
+    "GOLDENHOUR": {
+      name: "Best Mates",
+      video: "https://www.youtube.com/embed/jNQXAC9IVRw"
+    }
+    // Add more entries here, comma between each
+    // Last entry should NOT have a trailing comma
+  };
+
+  /* ============================================================
+     You shouldn't need to edit anything below this line
+     ============================================================ */
+
+  const input = document.getElementById('password');
+  const error = document.getElementById('error');
+  const card = document.getElementById('passwordCard');
+  const videoScreen = document.getElementById('videoScreen');
+  const greeting = document.getElementById('greeting');
+  const videoFrame = document.getElementById('videoFrame');
+
+  function checkPassword() {
+    const entered = input.value.trim().toUpperCase();
+    if (!entered) return;
+
+    const guest = guests[entered];
+    if (guest) {
+      greeting.textContent = `For ${guest.name}`;
+      videoFrame.src = guest.video + "?rel=0";
+      card.classList.add('hidden');
+      videoScreen.classList.add('active');
+      error.classList.remove('show');
+    } else {
+      error.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  function goBack() {
+    videoFrame.src = "";
+    videoScreen.classList.remove('active');
+    card.classList.remove('hidden');
+    input.value = '';
+    input.focus();
+  }
+
+  // Allow Enter key to submit
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') checkPassword();
+    error.classList.remove('show');
+  });
+
+  // Auto-focus on load
+  window.addEventListener('load', () => input.focus());
+</script>
+
+</body>
+</html>
